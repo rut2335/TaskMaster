@@ -28,7 +28,6 @@ export class RegisterComponent {
     if (this.registerForm.valid) {
       this.authService.register(this.registerForm.value as User).subscribe({
         next: (response) => {
-          sessionStorage.setItem('token', response.token);
           this.router.navigate(['/teams']); 
         },
         error: (err) => {

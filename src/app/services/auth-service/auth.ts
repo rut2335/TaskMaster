@@ -14,7 +14,12 @@ export class AuthService {
 currentUser = signal<any | null>(null);
 
   register(userData: User): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${environment.API_URL}/auth/register`, userData);
+    return this.http.post<AuthResponse>(`${environment.API_URL}/auth/register`, userData).pipe(
+      tap(response => {
+        this.currentUser.set(response.user);
+        sessionStorage.setItem('token', response.token);
+      })
+    );
   }
 
   login(userData: User): Observable<AuthResponse> {

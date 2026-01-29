@@ -1,9 +1,13 @@
 @if (authService.currentUser()) {
   <header class="main-nav">
-    <div class="logo" routerLink="/teams">TaskMaster 🚀</div>
-        <span>שלום, {{ authService.currentUser()?.name }} 👋</span>
-    <button (click)="logout()" class="btn-logout">התנתק</button>
-     </header>
+    <div class="nav-left">
+      <div class="logo" routerLink="/teams">TaskMaster 🚀</div>
+    </div>
+    <div class="nav-right">
+      <span class="greeting">שלום, <strong>{{ authService.currentUser()?.name }}</strong> 👋</span>
+      <button (click)="logout()" class="btn-logout">התנתק</button>
+    </div>
+  </header>
 }
 
 <div class="page-wrapper">

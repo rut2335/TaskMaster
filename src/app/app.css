@@ -1,51 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f7fafc;
+}
+
 .main-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.8rem 2rem;
-  background-color: #ffffff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.15);
   direction: rtl;
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
-.logo {
-  font-weight: 800;
-  font-size: 1.4rem;
-  color: #667eea;
-  cursor: pointer;
-  letter-spacing: -0.5px;
-}
-
-.user-actions {
+.nav-left {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 30px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: #ffffff;
+  cursor: pointer;
+  letter-spacing: -0.5px;
+  transition: transform 0.2s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
 }
 
 .greeting {
-  font-size: 0.95rem;
-  color: #4a5568;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 500;
 }
 
 .greeting strong {
-  color: #2d3748;
+  color: #fff;
+  font-weight: 700;
 }
 
 .btn-logout {
-  background-color: #fff;
-  color: #f56565;
-  border: 1px solid #f56565;
-  padding: 6px 16px;
-  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 8px 20px;
+  border-radius: 8px;
   font-weight: 600;
+  font-size: 0.95rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
 .btn-logout:hover {
-  background-color: #fff5f5;
-  transform: translateY(-1px);
+  background-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-logout:active {
+  transform: translateY(0);
+}
+
+.page-wrapper {
+  min-height: calc(100vh - 70px);
+  padding: 2rem;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .main-nav {
+    padding: 0.8rem 1.5rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav-left,
+  .nav-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+  }
+
+  .greeting {
+    font-size: 0.9rem;
+  }
+
+  .page-wrapper {
+    padding: 1rem;
+  }
 }
