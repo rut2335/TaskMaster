@@ -1,0 +1,157 @@
+/* --- הגדרות כלליות לדף --- */
+.manager-layout {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  direction: rtl; /* יישור לימין */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- כותרת עליונה --- */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.main-header h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+/* כפתור "יצירת צוות" - חזר לעיצוב הקלאסי */
+.add-team-btn {
+  background-color: #6c5ce7; /* סגול */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px; /* פינות סטנדרטיות (לא עיגול מלא) */
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.add-team-btn:hover {
+  background-color: #5b4bc4; /* כהה יותר במעבר עכבר */
+}
+
+/* --- הגריד (רשת הצוותים) --- */
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* מסדר אוטומטית לפי רוחב המסך */
+  gap: 24px;
+}
+
+/* --- כרטיס הצוות --- */
+.team-card {
+  background: white;
+  border: 1px solid #e0e0e0; /* מסגרת אפורה דקה */
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* כדי שהפינות העליונות לא יחתכו */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* אפקט הרמה עדין במעבר עכבר */
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* --- חלק עליון של הכרטיס (כותרת) --- */
+.card-header {
+  background-color: #f8f9fa; /* אפור בהיר מאוד */
+  padding: 16px 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #2d3748;
+  font-weight: 700;
+}
+
+/* --- גוף הכרטיס (הנתונים) --- */
+.card-body {
+  padding: 20px;
+  flex: 1; /* דוחף את הכפתורים למטה אם יש רווח */
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.label {
+  color: #718096; /* אפור בינוני */
+}
+
+.value {
+  color: #2d3748; /* כחול כהה/שחור */
+  font-weight: 600;
+}
+
+/* --- חלק תחתון (כפתורים) --- */
+.card-actions {
+  padding: 16px 20px;
+  border-top: 1px solid #eee;
+  display: flex;
+  gap: 12px; /* רווח בין הכפתורים */
+  background-color: white;
+}
+
+/* הגדרות משותפות לכפתורים בכרטיס */
+.card-actions button {
+  flex: 1; /* מחלק את הרוחב שווה בשווה */
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+/* כפתור הוספת חבר (ראשי בכרטיס) */
+.btn-primary {
+  background-color: #eef2ff; /* רקע כחול בהיר מאוד */
+  color: #4f46e5; /* טקסט כחול */
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background-color: #e0e7ff;
+}
+
+/* כפתור פרטים (משני) */
+.btn-secondary {
+  background-color: white;
+  border: 1px solid #cbd5e0 !important;
+  color: #4a5568;
+}
+
+.btn-secondary:hover {
+  background-color: #f7fafc;
+  border-color: #a0aec0 !important;
+}
+
+/* --- הודעה כשאין צוותים --- */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px;
+  color: #718096;
+  font-size: 1.1rem;
+}

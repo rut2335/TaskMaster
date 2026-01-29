@@ -1,0 +1,201 @@
+/* מבנה העמוד הכללי */
+.tasks-page {
+  padding: 20px;
+  background-color: #f4f7f9;
+  min-height: 100vh;
+  direction: rtl;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.tasks-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.project-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-back {
+  background: none;
+  border: none;
+  color: #667eea;
+  cursor: pointer;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.title-group h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #2d3748;
+}
+
+.project-tag {
+  font-size: 14px;
+  color: #a0aec0;
+}
+
+/* כפתור הוספה */
+.btn-add-task {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-add-task:hover {
+  background: #5a67d8;
+}
+
+/* לוח הקנבן */
+.kanban-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.kanban-column {
+  background: #ebf0f5;
+  border-radius: 12px;
+  padding: 15px;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* כותרת עמודה */
+.column-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+.column-header h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #4a5568;
+  flex-grow: 1;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.dot.todo { background: #ed8936; }
+.dot.progress { background: #4299e1; }
+.dot.done { background: #48bb78; }
+
+.count {
+  background: #cbd5e0;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* רשימת כרטיסים */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* כרטיס משימה */
+.task-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  border-right: 5px solid #cbd5e0; /* צבע ברירת מחדל */
+  transition: transform 0.1s;
+}
+
+.task-card:hover {
+  transform: scale(1.02);
+}
+
+/* צבעים לפי עדיפות */
+.task-card[data-priority="high"] { border-right-color: #f56565; }
+.task-card[data-priority="normal"] { border-right-color: #4299e1; }
+.task-card[data-priority="low"] { border-right-color: #48bb78; }
+
+.task-card h4 {
+  margin: 10px 0;
+  font-size: 15px;
+  color: #2d3748;
+}
+
+.task-desc {
+  font-size: 13px;
+  color: #718096;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+/* תחתית הכרטיס */
+.task-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #edf2f7;
+  padding-top: 10px;
+  font-size: 12px;
+}
+
+.task-date.overdue {
+  color: #e53e3e;
+  font-weight: bold;
+}
+
+.empty-column {
+  text-align: center;
+  color: #a0aec0;
+  font-size: 14px;
+  padding-top: 20px;
+  border: 2px dashed #cbd5e0;
+  border-radius: 8px;
+}
+/* כפתור עריכה בתוך הכרטיס */
+.btn-edit-task {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-edit-task:hover {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+/* שינוי הסמן בזמן גרירה */
+.task-card {
+  cursor: grab;
+}
+
+.task-card:active {
+  cursor: grabbing;
+  opacity: 0.7;
+}
+
+.kanban-column:hover {
+  background-color: #e2e8f0;
+  transition: background 0.3s;
+}

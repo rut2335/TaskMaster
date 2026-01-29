@@ -1,0 +1,98 @@
+.card-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  direction: rtl;
+}
+
+.team-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.card-header h2 {
+  margin: 0;
+  color: #333;
+}
+
+.card-header p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.input-group {
+  text-align: right;
+  margin: 25px 0;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #4A90E2;
+  outline: none;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #4A90E2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.submit-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.success-view {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.success-icon {
+  font-size: 40px;
+  color: #4CAF50;
+  margin-bottom: 15px;
+}
+
+.id-badge {
+  background: #f0f7f0;
+  color: #2e7d32;
+  padding: 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin: 10px 0;
+}
+
+.error-toast {
+  margin-top: 15px;
+  color: #d32f2f;
+  font-size: 0.85rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

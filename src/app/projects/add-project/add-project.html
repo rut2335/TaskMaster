@@ -1,0 +1,43 @@
+<div class="create-overlay">
+  <div class="create-modal">
+    <h3>הוספת פרויקט לצוות #{{ currentTeamId }}</h3>
+    
+    <form [formGroup]="projectForm" (ngSubmit)="saveProject()">
+      
+      <div class="input-wrapper">
+        <label for="name">שם הפרויקט</label>
+        <input 
+          id="name"
+          formControlName="name" 
+          type="text" 
+          placeholder="שם הפרויקט..."
+          class="project-input">
+      </div>
+
+      <div class="input-wrapper">
+        <label for="desc">תיאור</label>
+        <textarea 
+          id="desc"
+          formControlName="description" 
+          placeholder="תארו את הפרויקט..."
+          class="project-textarea"
+          rows="3"></textarea>
+      </div>
+
+      <div class="modal-buttons">
+        <button type="button" class="cancel-btn" [routerLink]="['..']">ביטול</button>
+        
+        <button 
+          type="submit" 
+          class="save-btn" 
+          [disabled]="projectForm.invalid || isLoading">
+          {{ isLoading ? 'שומר...' : 'שמור פרויקט' }}
+        </button>
+      </div>
+    </form>
+
+    @if (errorMessage) {
+      <div class="alert-error">{{ errorMessage }}</div>
+    }
+  </div>
+</div>

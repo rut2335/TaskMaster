@@ -1,0 +1,46 @@
+<div class="manager-layout">
+  <header class="main-header">
+    <h1>ניהול צוותים</h1>
+    <button class="add-team-btn" routerLink="create">
+       + יצירת צוות חדש
+    </button>
+  </header>
+
+  <router-outlet></router-outlet>
+
+  <div class="teams-grid">
+    @for (team of teamService.teams(); track team.id) {
+      <div class="team-card">
+        
+        <div class="card-header">
+          <h3>{{ team.name }}</h3>
+        </div>
+
+        <div class="card-body">
+          <div class="stat-row">
+            <span class="label">📅 נוצר ב:</span>
+            <span class="value">{{ team.created_at | date:'dd/MM/yyyy' }}</span>
+          </div>
+          <div class="stat-row">
+            <span class="label">👥 חברים:</span>
+            <span class="value">{{ team.members_count }}</span>
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <button class="btn-secondary" routerLink="/teams/{{ team.id }}">
+             👁️ פרטים
+          </button>
+          <button class="btn-primary" [routerLink]="['add-member', team.id]">
+             ➕ הוסף חבר
+          </button>
+        </div>
+
+      </div>
+    } @empty {
+      <div class="empty-state">
+        <p>עדיין אין צוותים. זה הזמן ליצור אחד!</p>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="create-overlay">
+  <div class="create-modal">
+    <h3>יצירת צוות חדש</h3>
+    
+    <form [formGroup]="teamForm" (ngSubmit)="saveTeam()">
+      <div class="input-wrapper">
+        <input 
+          formControlName="name" 
+          type="text" 
+          placeholder="הקלידו את שם הצוות..."
+          class="team-input">
+       
+      </div>
+
+      <div class="modal-buttons">
+        <button type="button" class="cancel-btn" routerLink="..">ביטול</button>
+        <button 
+          type="submit" 
+          class="save-btn" 
+          [disabled]="teamForm.invalid || isLoading">
+          {{ isLoading ? 'שומר...' : 'שמור צוות' }}
+        </button>
+      </div>
+    </form>
+
+    @if (errorMessage) {
+      <div class="alert-error">{{ errorMessage }}</div>
+    }
+  </div>
+</div>

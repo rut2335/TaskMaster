@@ -1,0 +1,29 @@
+<div class="modal-overlay" (click)="close()">
+  <div class="modal-card" (click)="$event.stopPropagation()">
+    <header>
+      <h3>הוספת חבר לצוות</h3>
+      <button class="close-x" (click)="close()">×</button>
+    </header>
+
+    <div class="modal-body">
+      <label>מזהה משתמש (ID):</label>
+      <input 
+        type="number" 
+        [(ngModel)]="userId" 
+        placeholder="הזן ID של חבר..." 
+        class="id-input"
+        (keyup.enter)="addMember()"
+      >
+    </div>
+
+    <footer>
+      <button class="btn-cancel" (click)="close()">ביטול</button>
+      <button 
+        class="btn-confirm" 
+        (click)="addMember()" 
+        [disabled]="!userId() || isSubmitting()">
+        {{ isSubmitting() ? 'מצרף...' : 'הוסף לצוות' }}
+      </button>
+    </footer>
+  </div>
+</div>

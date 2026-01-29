@@ -1,0 +1,61 @@
+<div class="projects-page">
+  <header class="page-header">
+    <div class="header-content">
+      <h1>פרויקטים של צוות #{{ currentTeamId() }}</h1>
+
+      <a routerLink="/teams" class="back-link">➡️ חזרה לכל הצוותים</a>
+    </div>
+
+    <button class="add-btn" routerLink="add-project">
+      <span class="icon">+</span> פרויקט חדש
+    </button>
+  </header>
+
+  <router-outlet></router-outlet>
+
+  <div class="projects-grid">
+
+    @for(project of teamProjects(); track project.id) {
+    <div class="project-card">
+
+      <div class="card-header">
+        <div class="title-section">
+          <h3>{{ project.name }}</h3>
+          <span class="id-tag">#{{ project.id }}</span>
+        </div>
+        <span class="status-badge" [attr.data-status]="project.status">
+          {{ project.status || 'פעיל' }}
+        </span>
+      </div>
+
+      <div class="card-body">
+        @if (project.description) {
+        <p class="description">{{ project.description }}</p>
+        } @else {
+        <p class="description placeholder">אין תיאור לפרויקט זה.</p>
+        }
+
+        <div class="meta-info">
+          <div class="info-item">
+            <span class="icon">📅</span>
+            <span>נוצר ב: {{ project.created_at | date:'dd/MM/yyyy' }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <button class="btn-action secondary" routerLink="/projects/{{ project.id }}">
+          📋 צפה במשימות 
+        </button>
+      </div>
+    </div>
+    } @empty {
+    <div class="empty-state">
+      <div class="empty-icon">📂</div>
+      <h3>אין פרויקטים בצוות זה</h3>
+      <p>זה הזמן ליצור את הפרויקט הראשון!</p>
+      <button class="btn-link" routerLink="add-project">צור פרויקט חדש</button>
+    </div>
+    }
+  </div>
+</div>

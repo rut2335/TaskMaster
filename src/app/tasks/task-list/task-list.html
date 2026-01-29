@@ -1,0 +1,85 @@
+<div class="tasks-page">
+  <header class="tasks-header">
+    <div class="project-info">
+      <button class="btn-back" routerLink="/teams">➡️ חזרה לצוותים</button>
+      <div class="title-group">
+        <h1>לוח משימות</h1>
+        <span class="project-tag">פרויקט #{{ projectId() }}</span>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="btn-add-task" routerLink="add-task">
+        <span class="icon">+</span> משימה חדשה
+      </button>
+    </div>
+  </header>
+
+  <router-outlet></router-outlet>
+
+  <div class="kanban-board">
+    <div class="kanban-column" (dragover)="onDragOver($event)" (drop)="onDrop($event, 'todo')">
+      <div class="column-header">
+        <span class="dot todo"></span>
+        <h3>לביצוע</h3>
+        <span class="count">{{ todoTasks().length }}</span>
+      </div>
+      <div class="task-list">
+        @for (task of todoTasks(); track task.id) {
+        <ng-container *ngTemplateOutlet="taskCard; context: { $implicit: task }"></ng-container>
+        }
+      </div>
+    </div>
+
+    <div class="kanban-column" (dragover)="onDragOver($event)" (drop)="onDrop($event, 'in_progress')">
+      <div class="column-header">
+        <span class="dot progress"></span>
+        <h3>בעבודה</h3>
+        <span class="count">{{ inProgressTasks().length }}</span>
+      </div>
+      <div class="task-list">
+        @for (task of inProgressTasks(); track task.id) {
+        <ng-container *ngTemplateOutlet="taskCard; context: { $implicit: task }"></ng-container>
+        }
+      </div>
+    </div>
+
+    <div class="kanban-column" (dragover)="onDragOver($event)" (drop)="onDrop($event, 'done')">
+      <div class="column-header">
+        <span class="dot done"></span>
+        <h3>הושלם</h3>
+        <span class="count">{{ doneTasks().length }}</span>
+      </div>
+      <div class="task-list">
+        @for (task of doneTasks(); track task.id) {
+        <ng-container *ngTemplateOutlet="taskCard; context: { $implicit: task }"></ng-container>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #taskCard let-task>
+  <div class="task-card" [attr.data-priority]="task.priority" draggable="true"
+    (dragstart)="onDragStart($event, task.id)">
+
+    <div class="task-card-header">
+      <span class="priority-badge">{{ task.priority }}</span>
+      <button class="btn-edit-task" [routerLink]="['edit', task.id]">✎ ערוך</button>
+      <button [routerLink]="['comments', task.id]" class="btn-comments">
+        💬 תגובות
+      </button>
+    </div>
+
+    <h4>{{ task.title }}</h4>
+    <p class="task-desc">{{ task.description }}</p>
+
+    <div class="task-card-footer">
+      <div class="task-date" [class.overdue]="isOverdue(task.due_date)">
+        📅 {{ task.due_date | date:'dd/MM' }}
+      </div>
+      <div class="assignee-avatar">
+        {{ task.assignee_id ? '👤' : '❓' }}
+      </div>
+    </div>
+  </div>
+</ng-template>

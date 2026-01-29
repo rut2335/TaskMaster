@@ -1,0 +1,34 @@
+<div class="register-container">
+    <h2>התחברות</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label>אימייל:</label>
+            <input type="email" formControlName="email" placeholder="example@mail.com">
+            @if(loginForm.get('email')?.invalid && loginForm.get('email')?.touched)
+            {
+            <small class="error">
+                אימייל לא תקין
+            </small>
+            }
+        </div>
+
+        <div class="form-group">
+            <label>סיסמה:</label>
+            <input type="password" formControlName="password" placeholder="לפחות 6 תווים">
+            @if(loginForm.get('password')?.invalid && loginForm.get('password')?.touched)
+            {
+            <small class="error">
+                הסיסמה קצרה מדי
+            </small>
+            }
+        </div>
+        @if (errorMessage) {
+        <div class="alert alert-danger">{{ errorMessage }}</div>
+        }
+        <button type="submit" [disabled]="loginForm.invalid">התחבר</button>
+    </form>
+
+    <p>אין לך עדיין חשבון? <a routerLink="/register">הרשם כאן</a></p>
+</div>
