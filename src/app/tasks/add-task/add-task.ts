@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core'; // הוספתי OnInit
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Task } from '../../services/task-service/task';
 import { ActivatedRoute, Router } from '@angular/router';

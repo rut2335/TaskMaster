@@ -36,7 +36,6 @@ private fb = inject(FormBuilder);
   }
 
   ngOnInit(): void {
-    // 1. שליפת פרמטרים מה-URL
     this.route.paramMap.subscribe(params => {
       const id = params.get('taskId');
       if (id) this.taskId = Number(id);
@@ -46,7 +45,6 @@ private fb = inject(FormBuilder);
       const pId = params.get('projectId');
       if (pId) {
         this.projectId = Number(pId);
-        // אם הרשימה ב-Service ריקה (למשל רענון דף), נטען אותה מחדש
         if (this.taskService.tasks().length === 0) {
           this.taskService.loadTasks(this.projectId);
         }

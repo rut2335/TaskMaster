@@ -28,12 +28,10 @@ export class RegisterComponent {
     if (this.registerForm.valid) {
       this.authService.register(this.registerForm.value as User).subscribe({
         next: (response) => {
-          console.log('Registration successful', response);
-          localStorage.setItem('token', response.token);
+          sessionStorage.setItem('token', response.token);
           this.router.navigate(['/teams']); 
         },
         error: (err) => {
-          console.error('Registration failed', err);
           this.errorMessage = err.error?.message || 'שגיאה בהרשמה נסה שוב מאוחר יותר';
         }
       });

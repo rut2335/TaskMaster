@@ -21,13 +21,13 @@ currentUser = signal<any | null>(null);
     return this.http.post<AuthResponse>(`${environment.API_URL}/auth/login`, userData).pipe(
       tap(response => {
         this.currentUser.set(response.user); 
-        localStorage.setItem('token', response.token);
+        sessionStorage.setItem('token', response.token);
       })
     );
   }
 
   logout() {
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
     this.currentUser.set(null);
   }
 }

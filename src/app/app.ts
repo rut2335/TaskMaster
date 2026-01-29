@@ -16,7 +16,5 @@ export class App {
     this.authService.logout(); 
     this.router.navigate(['/login']);
   }
-  constructor() {
-    console.log('אנגולר התחיל לרוץ!');
-  }
+
 }

@@ -28,12 +28,10 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value as User).subscribe({
         next: (response) => {
-          console.log('Login successful', response);
-          localStorage.setItem('token', response.token);
+          sessionStorage.setItem('token', response.token);
           this.router.navigate(['/teams']);
         },
         error: (err) => {
-          console.error('Login failed', err);
           this.errorMessage = err.error?.message || 'אימייל או סיסמה שגויים';
         }
       });
