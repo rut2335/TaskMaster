@@ -1,5 +1,3 @@
-export const API_URL = 'http://localhost:3000/api';
-
 import { HttpInterceptorFn } from '@angular/common/http';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {

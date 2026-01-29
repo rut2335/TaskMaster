@@ -2,7 +2,7 @@ import { inject, Injectable, signal } from '@angular/core';
 import { CreateProjectDto, ProjectModel } from '../../models/project-model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { API_URL } from '../../core/api.config';
+import { environment } from '../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,7 @@ export class Project {
   projects = signal<ProjectModel[]>([]);
 
   loadProjects() {
-    this.http.get<ProjectModel[]>(`${API_URL}/projects`).subscribe({
+    this.http.get<ProjectModel[]>(`${environment.API_URL}/projects`).subscribe({
       next: (projects) => {
         this.projects.set(projects);
       },
@@ -25,7 +25,7 @@ export class Project {
   }
 
   addProject(projectData: CreateProjectDto) {
-    return this.http.post(`${API_URL}/projects`, projectData);
+    return this.http.post(`${environment.API_URL}/projects`, projectData);
   }
   
 }

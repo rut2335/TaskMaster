@@ -20,8 +20,7 @@ export class AddFriend {
   isSubmitting = signal(false);
 
   addMember(): void {
-    const teamId = Number(this.route.snapshot.paramMap.get('teamId') || 
-                         this.route.parent?.snapshot.paramMap.get('teamId'));
+    const teamId = Number(this.route.snapshot.paramMap.get('teamId') || this.route.parent?.snapshot.paramMap.get('teamId'));
 
     if (teamId && this.userId() && !this.isSubmitting()) {
       this.isSubmitting.set(true);

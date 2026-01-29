@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { CommentModel, CreateCommentDto } from '../../models/comment-model';
-import { API_URL } from '../../core/api.config';
+import { environment } from '../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +12,7 @@ export class commentService {
   comments = signal<CommentModel[]>([]);
 
   loadComments(taskId: number) {
-    this.http.get<CommentModel[]>(`${API_URL}/comments?taskId=${taskId}`)
+    this.http.get<CommentModel[]>(`${environment.API_URL}/comments?taskId=${taskId}`)
       .subscribe({
         next: (comments) => {
           this.comments.set(comments);
@@ -24,7 +24,7 @@ export class commentService {
   }
 
   addComment(commentData: CreateCommentDto) {
-    return this.http.post(`${API_URL}/comments`, commentData);
+    return this.http.post(`${environment.API_URL}/comments`, commentData);
   }
 
 }
