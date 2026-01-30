@@ -5,8 +5,32 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f7fafc;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg);
+  color: #0f172a;
+}
+
+:root {
+  --bg: #f7fafc;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --primary: #6d28d9; /* purple */
+  --primary-2: #7c3aed;
+  --accent: #06b6d4; /* teal */
+  --glass: rgba(255,255,255,0.6);
+}
+
+/* subtle animated gradient for the page background */
+.page-wrapper::before {
+  content: '';
+  position: fixed;
+  inset: -20% -30% auto auto;
+  width: 60vw;
+  height: 60vh;
+  background: radial-gradient(closest-side, rgba(124,58,237,0.12), transparent 40%);
+  filter: blur(40px);
+  z-index: 0;
+  pointer-events: none;
 }
 
 .main-nav {
