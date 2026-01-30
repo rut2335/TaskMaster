@@ -203,18 +203,16 @@
   }
 }
 
-/* --- חלק תחתון (כפתורים) --- */
 .card-actions {
   padding: 16px 20px;
   border-top: 1px solid #eee;
   display: flex;
-  gap: 12px; /* רווח בין הכפתורים */
+  gap: 12px; 
   background-color: white;
 }
 
-/* הגדרות משותפות לכפתורים בכרטיס */
 .card-actions button {
-  flex: 1; /* מחלק את הרוחב שווה בשווה */
+  flex: 1; 
   padding: 8px 12px;
   border-radius: 6px;
   font-size: 0.9rem;
@@ -228,10 +226,9 @@
   transition: all 0.2s;
 }
 
-/* כפתור הוספת חבר (ראשי בכרטיס) */
 .btn-primary {
-  background-color: #eef2ff; /* רקע כחול בהיר מאוד */
-  color: #4f46e5; /* טקסט כחול */
+  background-color: #eef2ff; 
+  color: #4f46e5; 
   font-weight: 600;
 }
 
@@ -239,7 +236,6 @@
   background-color: #e0e7ff;
 }
 
-/* כפתור פרטים (משני) */
 .btn-secondary {
   background-color: white;
   border: 1px solid #cbd5e0 !important;
@@ -251,7 +247,6 @@
   border-color: #a0aec0 !important;
 }
 
-/* --- הודעה כשאין צוותים --- */
 .empty-state {
   grid-column: 1 / -1;
   text-align: center;

@@ -10,7 +10,7 @@ import { User } from '../../models/auth-model';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './login.html',
-  styleUrl: './login.css'
+  styleUrls: ['./login.css']
 })
 export class LoginComponent {
   private fb = inject(FormBuilder);

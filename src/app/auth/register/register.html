@@ -1,39 +1,44 @@
-<div class="auth-page">
-    <div class="auth-card">
-        <aside class="auth-visual">
-            <h3>ברוכים הבאים!</h3>
-            <p>צור חשבון כדי להתחיל לנהל צוותים, פרויקטים ומשימות בקלות ובמהירות.</p>
-        </aside>
-
-        <section class="auth-form">
-            <h2>יצירת חשבון חדש</h2>
-            <div class="subtitle">הצטרפו עכשיו — זה חינם ותוך דקות ספורות</div>
-
-            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-                <div class="form-group">
-                    <label>שם מלא</label>
-                    <input type="text" formControlName="name" placeholder="הכנס שם מלא">
-                    <small *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched" class="error">שם חייב להכיל לפחות 2 תווים</small>
+<div class="auth-wrap">
+        <div class="auth-card">
+                <div class="visual">
+                        <div class="visual-inner">
+                                <h1>ברוכים הבאים</h1>
+                                <p>התחל לנהל פרויקטים, צוותים ומשימות במקום אחד — פשוט ומהיר.</p>
+                        </div>
+                        <svg class="waves" viewBox="0 0 500 150" preserveAspectRatio="none">
+                                <path d="M-2.54,44.09 C149.99,150.00 271.27,-49.98 503.54,49.99 L500.00,0.00 L0.00,0.00 Z" style="stroke: none; fill: rgba(255,255,255,0.06);"></path>
+                        </svg>
                 </div>
 
-                <div class="form-group">
-                    <label>אימייל</label>
-                    <input type="email" formControlName="email" placeholder="example@mail.com">
-                    <small *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error">אימייל לא תקין</small>
+                <div class="form-side">
+                        <h2>יצירת חשבון חדש</h2>
+                        <p class="lead">הצטרפו עכשיו — זה חינם ותוך דקות.</p>
+
+                        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                                <div class="form-row">
+                                        <label>שם מלא</label>
+                                        <input type="text" formControlName="name" placeholder="הכנס שם מלא">
+                                        <small *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched" class="error">שם חייב להכיל לפחות 2 תווים</small>
+                                </div>
+
+                                <div class="form-row">
+                                        <label>אימייל</label>
+                                        <input type="email" formControlName="email" placeholder="example@mail.com">
+                                        <small *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error">אימייל לא תקין</small>
+                                </div>
+
+                                <div class="form-row">
+                                        <label>סיסמה</label>
+                                        <input type="password" formControlName="password" placeholder="לפחות 6 תווים">
+                                        <small *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error">הסיסמה קצרה מדי</small>
+                                </div>
+
+                                <div *ngIf="errorMessage" class="error global">{{ errorMessage }}</div>
+
+                                <button class="btn-primary" type="submit" [disabled]="registerForm.invalid">הרשמה</button>
+                        </form>
+
+                        <div class="alt">כבר יש לך חשבון? <a routerLink="/login">התחבר כאן</a></div>
                 </div>
-
-                <div class="form-group">
-                    <label>סיסמה</label>
-                    <input type="password" formControlName="password" placeholder="לפחות 6 תווים">
-                    <small *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error">הסיסמה קצרה מדי</small>
-                </div>
-
-                <div *ngIf="errorMessage" class="error" style="margin-bottom:12px">{{ errorMessage }}</div>
-
-                <button type="submit" [disabled]="registerForm.invalid">הרשמה</button>
-            </form>
-
-            <div class="small-link">כבר יש לך חשבון? <a routerLink="/login">התחבר כאן</a></div>
-        </section>
-    </div>
+        </div>
 </div>
